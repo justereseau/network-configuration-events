@@ -1,0 +1,597 @@
+! show version
+! Cisco Nexus Operating System (NX-OS) Software
+! TAC support: http://www.cisco.com/tac
+! Copyright (C) 2002-2017, Cisco and/or its affiliates.
+! All rights reserved.
+! The copyrights to certain works contained in this software are
+! owned by other third parties and used and distributed under their own
+! licenses, such as open source.  This software is provided "as is," and unless
+! otherwise stated, there is no warranty, express or implied, including but not
+! limited to warranties of merchantability and fitness for a particular purpose.
+! Certain components of this software are licensed under
+! the GNU General Public License (GPL) version 2.0 or 
+! GNU General Public License (GPL) version 3.0  or the GNU
+! Lesser General Public License (LGPL) Version 2.1 or 
+! Lesser General Public License (LGPL) Version 2.0. 
+! A copy of each such license is available at
+! http://www.opensource.org/licenses/gpl-2.0.php and
+! http://opensource.org/licenses/gpl-3.0.html and
+! http://www.opensource.org/licenses/lgpl-2.1.php and
+! http://www.gnu.org/licenses/old-licenses/library.txt.
+! 
+! Software
+!   BIOS: version 4.1.0
+!   NXOS: version 7.0(3)I6(2)
+!   BIOS compile time:  01/30/2017
+!   NXOS image file is: bootflash:///nxos.7.0.3.I6.2.bin
+!   NXOS compile time:  10/17/2017 19:00:00 [10/17/2017 21:48:10]
+! 
+! 
+! Hardware
+!   cisco Nexus3000 C3064PQ Chassis 
+!   Intel(R) Celeron(R) CPU        P4505  @ 1.87GHz with 3903096 kB of memory.
+!   Processor Board ID FOC16316CW2
+! 
+!   Device name: d-serv
+!   bootflash:    1635720 kB
+!   usb1:               0 kB (expansion flash)
+! 
+! show inventory
+! NAME: "Chassis",  DESCR: "Nexus3000 C3064PQ Chassis"             
+! PID: N3K-C3064PQ-10GX    ,  VID: V01 ,  SN: FOC1632R0KG          
+! 
+! NAME: "Slot 1",  DESCR: "48x10GE + 4x40G Supervisor"            
+! PID: N3K-C3064PQ-10GX    ,  VID: V01 ,  SN: FOC16316CW2          
+! 
+! NAME: "Power Supply 1",  DESCR: "Nexus3000 C3064PQ Chassis Power Supply"
+! PID: N2200-PAC-400W-B    ,  VID: V01 ,  SN: LIT16310ZB8          
+! 
+! NAME: "Power Supply 2",  DESCR: "Nexus3000 C3064PQ Chassis Power Supply"
+! PID: N2200-PAC-400W-B    ,  VID: V01 ,  SN: LIT16310Z9R          
+! 
+! NAME: "Fan 1",  DESCR: "Nexus3000 C3064PQ Chassis Fan Module"  
+! PID: N3K-C3064-FAN-B     ,  VID: V00 ,  SN: N/A                  
+! 
+! 
+! show running-config
+
+!Command: show running-config
+
+version 7.0(3)I6(2)
+hostname d-serv
+vdc d-serv id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 104
+  limit-resource u4route-mem minimum 128 maximum 128
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature privilege
+feature bash-shell
+feature bgp
+feature eigrp
+feature pbr
+feature interface-vlan
+feature lacp
+feature dhcp
+feature lldp
+clock timezone EST -5 0
+
+role name priv-1
+  description This is a system defined privilege role.
+  rule 2 permit command show running-config
+  rule 1 permit read  
+no password strength-check
+username admin password 5 <secret hidden>  role network-admin
+username lanets password 5 <secret hidden>  role network-admin
+
+banner motd ^C
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS 2020 - Distribution Switch
+^
+
+ssh login-attempts 4
+
+no ip domain-lookup
+ip domain-name event.lanets.ca
+ip name-server 10.20.10.6
+radius-server timeout 2
+radius-server host 10.20.10.6 key 7 "rjiyoojswwgtjawj" authentication accounting 
+aaa group server radius ipa 
+    server 10.20.10.6 
+    source-interface Vlan10
+crypto key param rsa label d-serv.event.lanets.ca modulus 2048 
+service unsupported-transceiver
+ip access-list FROM_PRIVATE_ACL
+  10 permit ip 10.0.0.0/8 any 
+  20 permit ip 172.16.0.0/12 any 
+  30 permit ip 192.168.0.0/16 any 
+ip access-list PRIVATE_ACL
+  10 permit ip any 10.0.0.0/8 
+  20 permit ip any 172.16.0.0/12 
+  30 permit ip any 192.168.0.0/16 
+ip access-list TO_PRIVATE_ACL
+  10 permit ip any 10.0.0.0/8 
+  20 permit ip any 172.16.0.0/12 
+  30 permit ip any 192.168.0.0/16 
+ip access-list copp-system-acl-eigrp
+  10 permit eigrp any 224.0.0.10/32 
+ipv6 access-list copp-system-acl-eigrp6
+  10 permit eigrp any ff02::a/128 
+ip access-list copp-system-acl-icmp
+  10 permit icmp any any 
+ip access-list copp-system-acl-igmp
+  10 permit igmp any any 
+ip access-list copp-system-acl-ntp
+  10 permit udp any any eq ntp 
+  20 permit udp any eq ntp any 
+ip access-list copp-system-acl-pimreg
+  10 permit pim any any 
+ip access-list copp-system-acl-ping
+  10 permit icmp any any echo 
+  20 permit icmp any any echo-reply 
+ip access-list copp-system-acl-routingproto1
+  10 permit tcp any gt 1024 any eq bgp 
+  20 permit tcp any eq bgp any gt 1024 
+  30 permit udp any 224.0.0.0/24 eq rip 
+  40 permit tcp any gt 1024 any eq 639 
+  50 permit tcp any eq 639 any gt 1024 
+  70 permit ospf any any 
+  80 permit ospf any 224.0.0.5/32 
+  90 permit ospf any 224.0.0.6/32 
+ip access-list copp-system-acl-routingproto2
+  10 permit udp any 224.0.0.0/24 eq 1985 
+  20 permit 112 any 224.0.0.0/24 
+ip access-list copp-system-acl-snmp
+  10 permit udp any any eq snmp 
+  20 permit udp any any eq snmptrap 
+ip access-list copp-system-acl-ssh
+  10 permit tcp any any eq 22 
+  20 permit tcp any eq 22 any 
+ip access-list copp-system-acl-stftp
+  10 permit udp any any eq tftp 
+  20 permit udp any any eq 1758 
+  30 permit udp any eq tftp any 
+  40 permit udp any eq 1758 any 
+  50 permit tcp any any eq 115 
+  60 permit tcp any eq 115 any 
+ip access-list copp-system-acl-tacacsradius
+  10 permit tcp any any eq tacacs 
+  20 permit tcp any eq tacacs any 
+  30 permit udp any any eq 1812 
+  40 permit udp any any eq 1813 
+  50 permit udp any any eq 1645 
+  60 permit udp any any eq 1646 
+  70 permit udp any eq 1812 any 
+  80 permit udp any eq 1813 any 
+  90 permit udp any eq 1645 any 
+  100 permit udp any eq 1646 any 
+ip access-list copp-system-acl-telnet
+  10 permit tcp any any eq telnet 
+  20 permit tcp any any eq 107 
+  30 permit tcp any eq telnet any 
+  40 permit tcp any eq 107 any 
+ipv6 access-list copp-system-acl-v6routingProto2
+  10 permit udp any ff02::66/128 eq 2029 
+  20 permit udp any ff02::fb/128 eq 5353 
+  30 permit 112 any ff02::12/128 
+ipv6 access-list copp-system-acl-v6routingproto1
+  10 permit 89 any ff02::5/128 
+  20 permit 89 any ff02::6/128 
+  30 permit udp any ff02::9/128 eq 521 
+ip access-list copp-system-dhcp-relay
+  10 permit udp any eq bootps any eq bootps 
+class-map type control-plane match-any copp-icmp
+  match access-group name copp-system-acl-icmp
+class-map type control-plane match-any copp-ntp
+  match access-group name copp-system-acl-ntp
+class-map type control-plane match-any copp-s-arp
+class-map type control-plane match-any copp-s-bfd
+class-map type control-plane match-any copp-s-bpdu
+class-map type control-plane match-any copp-s-dai
+class-map type control-plane match-any copp-s-default
+class-map type control-plane match-any copp-s-dhcpreq
+class-map type control-plane match-any copp-s-dhcpresp
+  match access-group name copp-system-dhcp-relay
+class-map type control-plane match-any copp-s-dpss
+class-map type control-plane match-any copp-s-eigrp
+  match access-group name copp-system-acl-eigrp
+  match access-group name copp-system-acl-eigrp6
+class-map type control-plane match-any copp-s-glean
+class-map type control-plane match-any copp-s-igmp
+  match access-group name copp-system-acl-igmp
+class-map type control-plane match-any copp-s-ipmcmiss
+class-map type control-plane match-any copp-s-l2switched
+class-map type control-plane match-any copp-s-l3destmiss
+class-map type control-plane match-any copp-s-l3mtufail
+class-map type control-plane match-any copp-s-l3slowpath
+class-map type control-plane match-any copp-s-mpls
+class-map type control-plane match-any copp-s-pimautorp
+class-map type control-plane match-any copp-s-pimreg
+  match access-group name copp-system-acl-pimreg
+class-map type control-plane match-any copp-s-ping
+  match access-group name copp-system-acl-ping
+class-map type control-plane match-any copp-s-ptp
+class-map type control-plane match-any copp-s-routingProto1
+  match access-group name copp-system-acl-routingproto1
+  match access-group name copp-system-acl-v6routingproto1
+class-map type control-plane match-any copp-s-routingProto2
+  match access-group name copp-system-acl-routingproto2
+class-map type control-plane match-any copp-s-selfIp
+class-map type control-plane match-any copp-s-ttl1
+class-map type control-plane match-any copp-s-v6routingProto2
+  match access-group name copp-system-acl-v6routingProto2
+class-map type control-plane match-any copp-s-vxlan
+class-map type control-plane match-any copp-snmp
+  match access-group name copp-system-acl-snmp
+class-map type control-plane match-any copp-ssh
+  match access-group name copp-system-acl-ssh
+class-map type control-plane match-any copp-stftp
+  match access-group name copp-system-acl-stftp
+class-map type control-plane match-any copp-tacacsradius
+  match access-group name copp-system-acl-tacacsradius
+class-map type control-plane match-any copp-telnet
+  match access-group name copp-system-acl-telnet
+policy-map type control-plane copp-system-policy 
+  class copp-s-default
+    police pps 400 
+  class copp-s-l2switched
+    police pps 200 
+  class copp-s-ping
+    police pps 100 
+  class copp-s-l3destmiss
+    police pps 100 
+  class copp-s-glean
+    police pps 500 
+  class copp-s-selfIp
+    police pps 500 
+  class copp-s-l3mtufail
+    police pps 100 
+  class copp-s-ttl1
+    police pps 100 
+  class copp-s-ipmcmiss
+    police pps 400 
+  class copp-s-l3slowpath
+    police pps 100 
+  class copp-s-dhcpreq
+    police pps 300 
+  class copp-s-dhcpresp
+    police pps 300 
+  class copp-s-dai
+    police pps 300 
+  class copp-s-igmp
+    police pps 400 
+  class copp-s-eigrp
+    police pps 200 
+  class copp-s-pimreg
+    police pps 200 
+  class copp-s-pimautorp
+    police pps 200 
+  class copp-s-routingProto2
+    police pps 1300 
+  class copp-s-v6routingProto2
+    police pps 1300 
+  class copp-s-routingProto1
+    police pps 1000 
+  class copp-s-arp
+    police pps 200 
+  class copp-s-ptp
+    police pps 1000 
+  class copp-s-vxlan
+    police pps 1000 
+  class copp-s-bfd
+    police pps 350 
+  class copp-s-bpdu
+    police pps 12000 
+  class copp-s-dpss
+    police pps 1000 
+  class copp-s-mpls
+    police pps 100 
+  class copp-icmp
+    police pps 200 
+  class copp-telnet
+    police pps 500 
+  class copp-ssh
+    police pps 500 
+  class copp-snmp
+    police pps 500 
+  class copp-ntp
+    police pps 100 
+  class copp-tacacsradius
+    police pps 400 
+  class copp-stftp
+    police pps 400 
+control-plane
+  service-policy input copp-system-policy 
+snmp-server user admin network-admin auth md5 <configuration removed>  localizedkey
+snmp-server user lanets network-operator auth md5 <configuration removed>  localizedkey
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+snmp-server community <configuration removed>
+ntp peer 206.108.0.131
+aaa authentication login default group ipa 
+aaa authentication login console local 
+login on-success log 
+
+vlan 1
+vlan 10
+  name Management
+vlan 12
+  name vSan
+vlan 13
+  name vMotion
+vlan 14
+  name FT/Prov
+vlan 20
+  name DMZ_Server
+vlan 21
+  name NAT_Subnet
+vlan 105
+  name Internet_Club
+vlan 106
+  name Bell_Lab
+vlan 247
+  name DMZ_LAB
+no spanning-tree vlan 1,247
+route-map ALL-NETWORKS permit 10
+  match ip address prefix-list ALL-NETWORKS 
+route-map NAT_PBR pbr-statistics
+route-map NAT_PBR deny 10
+  match ip address TO_PRIVATE_ACL 
+route-map NAT_PBR permit 20
+  match ip address FROM_PRIVATE_ACL 
+  set ip next-hop 10.20.10.2 
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context management
+vrf context oob-management
+  ip route 0.0.0.0/0 10.20.10.1
+hardware profile tcam region racl 256 
+hardware profile tcam region pbr 128 
+no system urpf disable
+no port-channel load-balance resilient
+hardware profile portmode 64x10G
+
+
+
+interface Vlan1
+
+interface Vlan10
+  description MANAGEMENT
+  no shutdown
+  no autostate
+  ip address 10.20.10.1/24
+
+interface Vlan20
+  description DMZ_Server
+  no shutdown
+  no autostate
+  ip address 216.208.120.113/29
+
+interface Vlan21
+  description NAT_Subnet
+  no shutdown
+  no autostate
+  ip address 216.208.136.49/28
+
+interface port-channel1
+  description esxi1:Te1-Te2
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+
+interface port-channel2
+  description esxi2:Te1-Te2
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+
+interface port-channel3
+  description esxi3:Te1-Te2
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+
+interface Ethernet1/1
+  description core01:Eth1/1
+  no switchport
+  ip address 192.168.100.2/30
+  ip router eigrp 1
+  no ip passive-interface eigrp 1
+  ip policy route-map NAT_PBR
+
+interface Ethernet1/2
+  description core02:Eth1/1
+  no switchport
+  bandwidth 10
+  ip address 192.168.200.2/30
+  ip router eigrp 1
+  no ip passive-interface eigrp 1
+  ip policy route-map NAT_PBR
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+  description TO OOB SWITCH
+  switchport mode trunk
+  switchport trunk allowed vlan 10
+  speed 1000
+
+interface Ethernet1/41
+  description CSGO:xg1
+  switchport access vlan 20
+
+interface Ethernet1/42
+  description CSGO:xg1
+  switchport access vlan 20
+
+interface Ethernet1/43
+  description esxi3:Te1
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+  channel-group 3 mode active
+
+interface Ethernet1/44
+  description esxi3:Te2
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+  channel-group 3 mode active
+
+interface Ethernet1/45
+  description esxi2:Te1
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+  channel-group 2 mode active
+
+interface Ethernet1/46
+  description esxi2:Te2
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+  channel-group 2 mode active
+
+interface Ethernet1/47
+  description esxi1:Te1
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+  channel-group 1 mode active
+
+interface Ethernet1/48
+  description esxi1:Te2
+  switchport mode trunk
+  switchport trunk allowed vlan 10,12-14,20-21,105
+  channel-group 1 mode active
+
+interface Ethernet1/49/1
+
+interface Ethernet1/49/2
+
+interface Ethernet1/49/3
+
+interface Ethernet1/49/4
+
+interface Ethernet1/50/1
+
+interface Ethernet1/50/2
+
+interface Ethernet1/50/3
+
+interface Ethernet1/50/4
+
+interface Ethernet1/51/1
+
+interface Ethernet1/51/2
+
+interface Ethernet1/51/3
+
+interface Ethernet1/51/4
+
+interface Ethernet1/52/1
+
+interface Ethernet1/52/2
+
+interface Ethernet1/52/3
+
+interface Ethernet1/52/4
+
+interface mgmt0
+  vrf member management
+line console
+line vty
+boot nxos bootflash:/nxos.7.0.3.I6.2.bin 
+ip route 10.0.8.0/24 10.20.10.2
+ip route 172.16.10.0/24 10.20.10.2
+ip route 172.20.0.0/24 10.20.10.2
+router eigrp 1
+  router-id 10.20.10.20
+  redistribute direct route-map ALL-NETWORKS
+  redistribute static route-map ALL-NETWORKS
+logging server elastic-lb.event.lanets.ca port 9002
+logging source-interface Vlan10
+
+
+
