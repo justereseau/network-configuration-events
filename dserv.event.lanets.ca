@@ -326,6 +326,7 @@ snmp-server community <configuration removed>
 ntp peer 206.108.0.131
 aaa authentication login default group ipa 
 aaa authentication login console local 
+login on-success log 
 
 vlan 1
 vlan 10
