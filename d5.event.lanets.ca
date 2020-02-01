@@ -1,0 +1,565 @@
+! Cisco IOS Software, C3560E Software (C3560E-UNIVERSALK9-M), Version 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
+! 
+! Image: Software: C3560E-UNIVERSALK9-M, 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
+! Image: Compiled: Thu 03-Nov-16 13:57 by prod_rel_team
+! Image: flash:/3560e-universalk9-mz.150-2.SE10a.bin
+! Chassis type: WS-C3560X-48P
+! Memory: main 262144K
+! Processor ID: FDO1437P0UX
+! CPU: PowerPC405
+! 
+! VTP: VTP Version capable             : 1 to 3
+! VTP: VTP version running             : 1
+! VTP: VTP Domain Name                 : 
+! VTP: VTP Pruning Mode                : Disabled
+! VTP: VTP Traps Generation            : Disabled
+! VTP: Device ID                       : 588d.0917.ff00
+! VTP: Local updater ID is 192.168.105.2 on interface Te1/1 (first layer3 interface found)
+! VTP: Feature VLAN:
+! VTP: --------------
+! VTP: VTP Operating Mode                : Server
+! VTP: Maximum VLANs supported locally   : 1005
+! VTP: Number of existing VLANs          : 17
+! VTP: Configuration Revision            : 105
+! VTP: MD5 digest                        : 0x33 0x8F 0x74 0x78 0x1E 0xE7 0x13 0x70 
+! VTP:                                     0x4F 0x86 0xE6 0xBE 0x94 0xC9 0x22 0x40 
+! 
+! NAME: "1", DESCR: "WS-C3560X-48P"
+! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0UX
+! 
+! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
+! PID: C3KX-PWR-350WAC   , VID: V03A , SN: ART1952F4FP
+! 
+! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
+! PID: C3KX-NM-10G       , VID: V01  , SN: FDO18071N7A
+! 
+! NAME: "TenGigabitEthernet1/1", DESCR: "SFP-10GBase-SR"
+! PID: SFP-10G-SR          , VID: V03  , SN: FIN1847025D     
+! 
+! NAME: "TenGigabitEthernet1/2", DESCR: "SFP-10GBase-SR"
+! PID: SFP-10G-SR          , VID: V03  , SN: FIN184603F4     
+! 
+! 
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname d5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username lanets privilege 15 password 7 <secret hidden>
+aaa new-model
+!
+!
+aaa group server radius ipa
+ server-private 10.20.10.6 auth-port 1812 acct-port 1813 key 7 <secret hidden>
+ ip radius source-interface Loopback10
+!
+aaa authentication login default group ipa local
+aaa authorization exec default group ipa local 
+!
+!
+!
+!
+!
+!
+aaa session-id common
+system mtu routing 1500
+ip routing
+!
+!
+no ip domain-lookup
+ip domain-name event.lanets.ca
+login block-for 300 attempts 4 within 120
+login delay 2
+login on-failure log
+login on-success log
+!
+!
+!
+license boot level ipservices
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback10
+ description Management
+ ip address 10.11.5.1 255.255.255.0
+!
+interface Port-channel1
+ description PORTCHANNEL TO AXS-26.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,526
+ switchport mode trunk
+!
+interface Port-channel2
+ description PORTCHANNEL TO AXS-27.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,527
+ switchport mode trunk
+!
+interface Port-channel3
+ description PORTCHANNEL TO AXS-28.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,528
+ switchport mode trunk
+!
+interface Port-channel4
+ description PORTCHANNEL TO AXS-29.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,529
+ switchport mode trunk
+!
+interface Port-channel5
+ description PORTCHANNEL TO AXS-30.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,530
+ switchport mode trunk
+!
+interface Port-channel6
+ description PORTCHANNEL TO AXS-31.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,531
+ switchport mode trunk
+!
+interface Port-channel7
+ description PORTCHANNEL TO AXS-32.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,532
+ switchport mode trunk
+!
+interface Port-channel8
+ description PORTCHANNEL TO AXS-33.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,533
+ switchport mode trunk
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+!
+interface GigabitEthernet0/1
+ description UPLINK TO AXS-26.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,526
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/2
+ description UPLINK TO AXS-26.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,526
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/3
+ description UPLINK TO AXS-26.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,526
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/4
+ description UPLINK TO AXS-26.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,526
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/5
+ description UPLINK TO AXS-27.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,527
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/6
+ description UPLINK TO AXS-27.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,527
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/7
+ description UPLINK TO AXS-27.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,527
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/8
+ description UPLINK TO AXS-27.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,527
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/9
+ description UPLINK TO AXS-28.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,528
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/10
+ description UPLINK TO AXS-28.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,528
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/11
+ description UPLINK TO AXS-28.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,528
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/12
+ description UPLINK TO AXS-28.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,528
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/13
+ description UPLINK TO AXS-29.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,529
+ switchport mode trunk
+ channel-group 4 mode active
+!
+interface GigabitEthernet0/14
+ description UPLINK TO AXS-29.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,529
+ switchport mode trunk
+ channel-group 4 mode active
+!
+interface GigabitEthernet0/15
+ description UPLINK TO AXS-29.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,529
+ switchport mode trunk
+ channel-group 4 mode active
+!
+interface GigabitEthernet0/16
+ description UPLINK TO AXS-29.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,529
+ switchport mode trunk
+ channel-group 4 mode active
+!
+interface GigabitEthernet0/17
+ description UPLINK TO AXS-30.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,530
+ switchport mode trunk
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/18
+ description UPLINK TO AXS-30.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,530
+ switchport mode trunk
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/19
+ description UPLINK TO AXS-30.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,530
+ switchport mode trunk
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/20
+ description UPLINK TO AXS-30.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,530
+ switchport mode trunk
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/21
+ description UPLINK TO AXS-31.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,531
+ switchport mode trunk
+ channel-group 6 mode active
+!
+interface GigabitEthernet0/22
+ description UPLINK TO AXS-31.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,531
+ switchport mode trunk
+ channel-group 6 mode active
+!
+interface GigabitEthernet0/23
+ description UPLINK TO AXS-31.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,531
+ switchport mode trunk
+ channel-group 6 mode active
+!
+interface GigabitEthernet0/24
+ description UPLINK TO AXS-31.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,531
+ switchport mode trunk
+ channel-group 6 mode active
+!
+interface GigabitEthernet0/25
+ description UPLINK TO AXS-32.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,532
+ switchport mode trunk
+ channel-group 7 mode active
+!
+interface GigabitEthernet0/26
+ description UPLINK TO AXS-32.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,532
+ switchport mode trunk
+ channel-group 7 mode active
+!
+interface GigabitEthernet0/27
+ description UPLINK TO AXS-32.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,532
+ switchport mode trunk
+ channel-group 7 mode active
+!
+interface GigabitEthernet0/28
+ description UPLINK TO AXS-32.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,532
+ switchport mode trunk
+ channel-group 7 mode active
+!
+interface GigabitEthernet0/29
+ description UPLINK TO AXS-33.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,533
+ switchport mode trunk
+ channel-group 8 mode active
+!
+interface GigabitEthernet0/30
+ description UPLINK TO AXS-33.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,533
+ switchport mode trunk
+ channel-group 8 mode active
+!
+interface GigabitEthernet0/31
+ description UPLINK TO AXS-33.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,533
+ switchport mode trunk
+ channel-group 8 mode active
+!
+interface GigabitEthernet0/32
+ description UPLINK TO AXS-33.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,533
+ switchport mode trunk
+ channel-group 8 mode active
+!
+interface GigabitEthernet0/33
+!
+interface GigabitEthernet0/34
+!
+interface GigabitEthernet0/35
+!
+interface GigabitEthernet0/36
+!
+interface GigabitEthernet0/37
+!
+interface GigabitEthernet0/38
+!
+interface GigabitEthernet0/39
+!
+interface GigabitEthernet0/40
+!
+interface GigabitEthernet0/41
+!
+interface GigabitEthernet0/42
+!
+interface GigabitEthernet0/43
+!
+interface GigabitEthernet0/44
+!
+interface GigabitEthernet0/45
+!
+interface GigabitEthernet0/46
+!
+interface GigabitEthernet0/47
+!
+interface GigabitEthernet0/48
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet1/3
+!
+interface GigabitEthernet1/4
+!
+interface TenGigabitEthernet1/1
+ description PtP-CORE-1
+ no switchport
+ ip address 192.168.105.2 255.255.255.252
+!
+interface TenGigabitEthernet1/2
+ description PtP-CORE-2
+ no switchport
+ ip address 192.168.205.2 255.255.255.252
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ description Management
+ ip address 10.10.5.1 255.255.255.0
+!
+interface Vlan90
+ description Management
+ ip address 10.90.5.1 255.255.255.0
+!
+interface Vlan99
+ description Management
+ ip address 10.99.5.1 255.255.255.0
+!
+interface Vlan526
+ ip address 216.208.114.65 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan527
+ ip address 216.208.114.129 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan528
+ ip address 216.208.114.193 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan529
+ ip address 216.208.115.1 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan530
+ ip address 216.208.115.65 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan531
+ ip address 216.208.115.129 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan532
+ ip address 216.208.115.193 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan533
+ ip address 216.208.116.1 255.255.255.192
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+!
+router eigrp 1
+ network 192.168.105.0 0.0.0.3
+ network 192.168.205.0 0.0.0.3
+ redistribute connected
+ eigrp router-id 10.10.5.1
+ eigrp stub connected summary
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging origin-id hostname
+logging source-interface Loopback10
+logging host 10.20.10.55 transport udp port 9002
+!
+snmp-server community <configuration removed>
+!
+radius-server timeout 2
+!
+!
+banner login ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - D5
+^C
+banner motd ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - D5
+^C
+!
+line con 0
+ logging synchronous
+line vty 0 4
+ access-class MGMT_ACL in
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ access-class MGMT_ACL in
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+!
+end
+
