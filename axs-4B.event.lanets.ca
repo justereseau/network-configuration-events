@@ -85,10 +85,9 @@ vlan internal allocation policy ascending
 interface Loopback10
  no ip address
 !
-interface Port-channel1
+interface Port-channel2
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
  switchport mode trunk
 !
 interface FastEthernet0
@@ -179,65 +178,32 @@ interface GigabitEthernet0/17
 interface GigabitEthernet0/18
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
  switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/19
- description INTERCONNECT_STACK
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
- switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
 !
 interface GigabitEthernet0/20
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
  switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/21
- description INTERCONNECT_STACK
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
- switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
 !
 interface GigabitEthernet0/22
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
  switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/23
- description INTERCONNECT_STACK
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
- switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
 !
 interface GigabitEthernet0/24
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
  switchport mode trunk
- switchport nonegotiate
- speed 1000
- channel-group 1 mode on
+ channel-group 2 mode active
 !
 interface GigabitEthernet1/1
 !
