@@ -141,7 +141,6 @@ interface Port-channel2
 !
 interface FastEthernet0
  no ip address
- shutdown
 !
 interface GigabitEthernet0/1
  description BYOC interface
@@ -246,12 +245,10 @@ interface GigabitEthernet0/17
  spanning-tree portfast
 !
 interface GigabitEthernet0/18
- description INTERCONNECT_STACK
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
- switchport mode trunk
- speed 1000
- channel-group 2 mode active
+ description BYOC interface
+ switchport access vlan 104
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/19
  description BYOC interface
@@ -260,12 +257,10 @@ interface GigabitEthernet0/19
  spanning-tree portfast
 !
 interface GigabitEthernet0/20
- description INTERCONNECT_STACK
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
- switchport mode trunk
- speed 1000
- channel-group 2 mode active
+ description BYOC interface
+ switchport access vlan 104
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/21
  description BYOC interface
@@ -274,12 +269,10 @@ interface GigabitEthernet0/21
  spanning-tree portfast
 !
 interface GigabitEthernet0/22
- description INTERCONNECT_STACK
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
- switchport mode trunk
- speed 1000
- channel-group 2 mode active
+ description BYOC interface
+ switchport access vlan 104
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/23
  description BYOC interface
@@ -390,8 +383,8 @@ interface GigabitEthernet0/41
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,104
  switchport mode trunk
- shutdown
  speed 1000
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/42
  description UPLINK TO D1
@@ -406,8 +399,8 @@ interface GigabitEthernet0/43
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,104
  switchport mode trunk
- shutdown
  speed 1000
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/44
  description UPLINK TO D1
@@ -422,8 +415,8 @@ interface GigabitEthernet0/45
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,104
  switchport mode trunk
- shutdown
  speed 1000
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/46
  description UPLINK TO D1
@@ -438,8 +431,8 @@ interface GigabitEthernet0/47
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,104
  switchport mode trunk
- shutdown
  speed 1000
+ channel-group 2 mode active
 !
 interface GigabitEthernet0/48
  description UPLINK TO D1
@@ -463,7 +456,6 @@ interface TenGigabitEthernet1/2
 !
 interface Vlan1
  no ip address
- shutdown
 !
 interface Vlan10
  description Management
