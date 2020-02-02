@@ -384,7 +384,7 @@ interface GigabitEthernet0/41
  switchport trunk allowed vlan 10,104
  switchport mode trunk
  speed 1000
- channel-group 2 mode active
+ channel-group 2 mode on
 !
 interface GigabitEthernet0/42
  description UPLINK TO D1
@@ -400,7 +400,7 @@ interface GigabitEthernet0/43
  switchport trunk allowed vlan 10,104
  switchport mode trunk
  speed 1000
- channel-group 2 mode active
+ channel-group 2 mode on
 !
 interface GigabitEthernet0/44
  description UPLINK TO D1
@@ -416,7 +416,7 @@ interface GigabitEthernet0/45
  switchport trunk allowed vlan 10,104
  switchport mode trunk
  speed 1000
- channel-group 2 mode active
+ channel-group 2 mode on
 !
 interface GigabitEthernet0/46
  description UPLINK TO D1
@@ -432,7 +432,7 @@ interface GigabitEthernet0/47
  switchport trunk allowed vlan 10,104
  switchport mode trunk
  speed 1000
- channel-group 2 mode active
+ channel-group 2 mode on
 !
 interface GigabitEthernet0/48
  description UPLINK TO D1
