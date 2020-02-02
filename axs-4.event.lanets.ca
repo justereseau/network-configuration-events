@@ -67,6 +67,7 @@ aaa session-id common
 system mtu routing 1500
 !
 !
+ip dhcp snooping
 no ip domain-lookup
 ip domain-name event.lanets.ca
 login block-for 300 attempts 4 within 120
@@ -136,7 +137,6 @@ interface Port-channel1
 interface Port-channel2
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,104
  switchport mode trunk
 !
 interface FastEthernet0
