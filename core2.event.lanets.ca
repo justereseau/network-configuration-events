@@ -618,6 +618,7 @@ router bgp 64511
       weight 0
 logging server elastic-lb.event.lanets.ca port 9002
 logging source-interface mgmt0
+logging origin-id hostname
 
 
 
