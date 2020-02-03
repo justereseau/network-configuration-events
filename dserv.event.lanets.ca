@@ -629,6 +629,7 @@ router eigrp 1
   redistribute static route-map ALL-NETWORKS
 logging server elastic-lb.event.lanets.ca port 9002
 logging source-interface Vlan10
+logging origin-id hostname
 
 
 
