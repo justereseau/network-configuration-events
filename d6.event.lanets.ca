@@ -20,8 +20,8 @@
 ! VTP: Maximum VLANs supported locally   : 1005
 ! VTP: Number of existing VLANs          : 14
 ! VTP: Configuration Revision            : 0
-! VTP: MD5 digest                        : 0x66 0x87 0xDC 0x82 0xC2 0x8B 0x80 0x97 
-! VTP:                                     0x3D 0x69 0x0A 0x0F 0xA7 0xD6 0xDA 0x66 
+! VTP: MD5 digest                        : 0x49 0xB7 0x12 0x7F 0xBA 0x14 0x98 0xE2 
+! VTP:                                     0x0C 0x18 0x29 0xA9 0x5A 0x91 0x3A 0xE8 
 ! 
 ! NAME: "1", DESCR: "WS-C3560X-48P"
 ! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0V5
@@ -39,7 +39,6 @@
 ! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223297     
 ! 
 ! 
-!
 !
 version 15.0
 no service pad
