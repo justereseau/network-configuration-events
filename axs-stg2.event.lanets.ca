@@ -1,0 +1,254 @@
+! Cisco IOS Software, C3560C Software (C3560c405ex-UNIVERSALK9-M), Version 15.0(2)SE8, RELEASE SOFTWARE (fc1)
+! 
+! Image: Software: C3560c405ex-UNIVERSALK9-M, 15.0(2)SE8, RELEASE SOFTWARE (fc1)
+! Image: Compiled: Thu 14-May-15 03:33 by prod_rel_team
+! Image: flash:/c3560c405ex-universalk9-mz.150-2.SE8/c3560c405ex-universalk9-mz.150-2.SE8.bin
+! Chassis type: WS-C3560CG-8TC-S
+! Memory: main 131072K
+! Processor ID: FOC2031Z4ZT
+! CPU: PowerPC
+! 
+! VTP: VTP Version capable             : 1 to 3
+! VTP: VTP version running             : 1
+! VTP: VTP Domain Name                 : 
+! VTP: VTP Pruning Mode                : Disabled
+! VTP: VTP Traps Generation            : Disabled
+! VTP: Device ID                       : 0087.3192.6100
+! VTP: Local updater ID is 10.10.7.2 on interface Vl10 (lowest numbered VLAN interface found)
+! VTP: Feature VLAN:
+! VTP: --------------
+! VTP: VTP Operating Mode                : Server
+! VTP: Maximum VLANs supported locally   : 1005
+! VTP: Number of existing VLANs          : 7
+! VTP: Configuration Revision            : 2
+! VTP: MD5 digest                        : 0x73 0xED 0xD7 0x98 0x4A 0xC5 0x03 0x64 
+! VTP:                                     0x05 0x7B 0x30 0x0E 0x51 0xD3 0x01 0x3A 
+! 
+! NAME: "1", DESCR: "WS-C3560CG-8TC-S"
+! PID: WS-C3560CG-8TC-S  , VID: V05  , SN: FOC2031Z4ZT
+! 
+! 
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname axs-stg2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username lanets privilege 15 password 7 <secret hidden>
+aaa new-model
+!
+!
+aaa group server radius ipa
+ server-private 10.20.10.6 auth-port 1812 acct-port 1813 key 7 <secret hidden>
+ ip radius source-interface Vlan10
+!
+aaa authentication login default group ipa local
+aaa authorization exec default group ipa local 
+!
+!
+!
+!
+!
+!
+aaa session-id common
+system mtu routing 1500
+!
+!
+no ip domain-lookup
+ip domain-name event.lanets.ca
+login block-for 300 attempts 4 within 120
+login delay 2
+login on-failure log
+login on-success log
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description PORTCHANNEL TO D7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,702
+ switchport mode trunk
+!
+interface GigabitEthernet0/1
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ description BYOC interface
+ switchport access vlan 702
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ description UPLINK TO D7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,702
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/10
+ description UPLINK TO D7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,702
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ description Management
+ ip address 10.10.7.2 255.255.255.0
+!
+ip default-gateway 10.10.7.1
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging origin-id hostname
+logging source-interface Vlan10
+logging host 10.20.10.55 transport udp port 9002
+!
+snmp-server community <configuration removed>
+!
+radius-server timeout 2
+!
+!
+banner motd ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - AXS-Stage-2
+^C
+!
+line con 0
+ logging synchronous
+line vty 0 4
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+!
+end
+
