@@ -1,0 +1,666 @@
+! Cisco IOS Software, C3560E Software (C3560E-UNIVERSALK9-M), Version 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
+! 
+! Image: Software: C3560E-UNIVERSALK9-M, 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
+! Image: Compiled: Thu 03-Nov-16 13:57 by prod_rel_team
+! Image: flash:3560e-universalk9-mz.150-2.SE10a.bin
+! Chassis type: WS-C3560X-48
+! Memory: main 262144K
+! Processor ID: FDO1651X12L
+! CPU: PowerPC405
+! 
+! VTP: VTP Version capable             : 1 to 3
+! VTP: VTP version running             : 1
+! VTP: VTP Domain Name                 : 
+! VTP: VTP Pruning Mode                : Disabled
+! VTP: VTP Traps Generation            : Disabled
+! VTP: Device ID                       : 0006.f652.9b80
+! VTP: Feature VLAN:
+! VTP: --------------
+! VTP: VTP Operating Mode                : Transparent
+! VTP: Maximum VLANs supported locally   : 1005
+! VTP: Number of existing VLANs          : 27
+! VTP: Configuration Revision            : 0
+! VTP: MD5 digest                        : 0x10 0xC6 0x1D 0xDC 0x86 0x5D 0xB0 0x4A 
+! VTP:                                     0x46 0xEC 0x90 0x41 0x10 0xD4 0x07 0xD3 
+! 
+! NAME: "1", DESCR: "WS-C3560X-48"
+! PID: WS-C3560X-48T-E   , VID: V04  , SN: FDO1651X12L
+! 
+! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
+! PID: PWR-C1-715WAC     , VID: V02D , SN: DCA2126G2E3
+! 
+! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
+! PID: C3KX-NM-10G       , VID: V01  , SN: FDO17282CMX
+! 
+! NAME: "TenGigabitEthernet1/1", DESCR: "SFP-10GBase-LR"
+! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223290     
+! 
+! NAME: "TenGigabitEthernet1/2", DESCR: "SFP-10GBase-LR"
+! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223291     
+! 
+! 
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname d8
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username lanets privilege 15 password 7 <secret hidden>
+aaa new-model
+!
+!
+aaa group server radius ipa
+ server-private 10.20.10.6 auth-port 1812 acct-port 1813 key 7 <secret hidden>
+ ip radius source-interface Loopback10
+!
+aaa authentication login default group ipa local
+aaa authorization exec default group ipa local 
+!
+!
+!
+!
+!
+!
+aaa session-id common
+system mtu routing 1500
+ip routing
+!
+!
+!
+no ip domain-lookup
+ip domain-name event.lanets.ca
+login block-for 300 attempts 4 within 120
+login delay 2
+login on-failure log
+login on-success log
+vtp mode transparent
+!
+!
+!
+license boot level ipservices
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 10
+ name Management
+!
+vlan 99
+ name Private
+!
+vlan 201
+ name AB
+!
+vlan 202
+ name CD
+!
+vlan 203
+ name EF
+!
+vlan 204
+ name GH
+!
+vlan 205
+ name IJ
+!
+vlan 206
+ name KL
+!
+vlan 207
+ name MN
+!
+vlan 208
+ name OP
+!
+vlan 209
+ name QR
+!
+vlan 210
+ name ST
+!
+vlan 211
+ name UV
+!
+vlan 212
+ name WX
+!
+vlan 213
+ name YZ
+!
+vlan 247 
+!
+vlan 266
+ name WifiAP
+!
+vlan 299
+ name MANAGEMENT
+!
+vlan 801
+ name PUBLIC_VLAN_AXS-FTP1.EVENT.LANET
+!
+vlan 802
+ name PUBLIC_VLAN_AXS-FTP2.EVENT.LANET
+!
+vlan 803
+ name PUBLIC_VLAN_AXS-FTP3.EVENT.LANET
+!
+vlan 804
+ name PUBLIC_VLAN_AXS-FTP4.EVENT.LANET
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback10
+ description Management
+ ip address 10.11.8.1 255.255.255.0
+!
+interface Port-channel1
+ description PORTCHANNEL TO AXS-FTP1.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,801
+ switchport mode trunk
+!
+interface Port-channel2
+ description PORTCHANNEL TO AXS-FTP2.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,802
+ switchport mode trunk
+!
+interface Port-channel3
+ description PORTCHANNEL TO AXS-FTP3.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,803
+ switchport mode trunk
+!
+interface Port-channel4
+ description PORTCHANNEL TO AXS-FTP4.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,804
+ switchport mode trunk
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+!
+interface GigabitEthernet0/1
+ description UPLINK TO AXS-FTP1.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,801
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/2
+ description UPLINK TO AXS-FTP1.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,801
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/3
+ description UPLINK TO AXS-FTP2.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,802
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/4
+ description UPLINK TO AXS-FTP2.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,802
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/5
+ description UPLINK TO AXS-FTP3.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,803
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/6
+ description UPLINK TO AXS-FTP3.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,803
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/7
+ description UPLINK TO AXS-FTP4.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,804
+ switchport mode trunk
+ channel-group 4 mode active
+!
+interface GigabitEthernet0/8
+ description UPLINK TO AXS-FTP4.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,99,804
+ switchport mode trunk
+ channel-group 4 mode active
+!
+interface GigabitEthernet0/9
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/10
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/11
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/12
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/13
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/14
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/15
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/16
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/17
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/18
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/19
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/20
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/21
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/22
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/23
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/24
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/25
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/26
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/27
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/28
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/29
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/30
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/31
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/32
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/33
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/34
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/35
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/36
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/37
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/38
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/39
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/40
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/41
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/42
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/43
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/44
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/45
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/46
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/47
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet0/48
+ description UPLINK TO RANDOM SPONSOR
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet1/3
+!
+interface GigabitEthernet1/4
+!
+interface TenGigabitEthernet1/1
+ description PtP-CORE-1
+ no switchport
+ ip address 192.168.108.2 255.255.255.252
+!
+interface TenGigabitEthernet1/2
+ description PtP-CORE-2
+ no switchport
+ ip address 192.168.208.2 255.255.255.252
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ description Management
+ ip address 10.10.8.1 255.255.255.0
+!
+interface Vlan99
+ description Management
+ ip address 10.99.8.1 255.255.255.0
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan801
+ ip address 216.208.116.193 255.255.255.240
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan802
+ ip address 216.208.116.209 255.255.255.240
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan803
+ ip address 216.208.116.225 255.255.255.240
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+interface Vlan804
+ ip address 216.208.116.241 255.255.255.240
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
+!
+!
+router eigrp 1
+ network 192.168.108.0 0.0.0.3
+ network 192.168.208.0 0.0.0.3
+ redistribute connected
+ eigrp router-id 10.10.8.1
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging origin-id hostname
+logging source-interface Loopback10
+logging host 10.20.10.55 transport udp port 9002
+!
+!
+snmp-server community <configuration removed>
+!
+radius-server timeout 2
+!
+!
+banner login ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - D8
+^C
+banner motd ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - D8
+^C
+!
+line con 0
+ logging synchronous
+line vty 0 4
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+!
+end
+
