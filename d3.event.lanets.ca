@@ -73,6 +73,7 @@ aaa authorization exec default group ipa local
 aaa session-id common
 system mtu routing 1500
 ip routing
+no ip cef optimize neighbor resolution
 !
 !
 !
