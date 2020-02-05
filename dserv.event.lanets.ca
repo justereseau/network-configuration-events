@@ -32,7 +32,7 @@
 !   Intel(R) Celeron(R) CPU        P4505  @ 1.87GHz with 3903096 kB of memory.
 !   Processor Board ID FOC16316CW2
 ! 
-!   Device name: dserv.event.lanets.ca
+!   Device name: dserv
 !   bootflash:    1635720 kB
 !   usb1:               0 kB (expansion flash)
 ! 
@@ -58,8 +58,8 @@
 !Command: show running-config
 
 version 7.0(3)I6(2)
-hostname dserv.event.lanets.ca
-vdc dserv.event.lanets.ca id 1
+hostname dserv
+vdc dserv id 1
   limit-resource vlan minimum 16 maximum 4094
   limit-resource vrf minimum 2 maximum 4096
   limit-resource port-channel minimum 0 maximum 104
