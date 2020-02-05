@@ -14,15 +14,15 @@
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
 ! VTP: Device ID                       : 588d.0919.9880
-! VTP: Local updater ID is 192.168.101.2 on interface Te1/1 (first layer3 interface found)
+! VTP: Local updater ID is 10.10.1.1 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
 ! VTP: Maximum VLANs supported locally   : 1005
 ! VTP: Number of existing VLANs          : 16
-! VTP: Configuration Revision            : 51
-! VTP: MD5 digest                        : 0xFA 0x52 0xE0 0x7D 0x77 0x78 0xD0 0x1F 
-! VTP:                                     0xC2 0x50 0x1B 0xBE 0x15 0xB5 0xB1 0x0B 
+! VTP: Configuration Revision            : 53
+! VTP: MD5 digest                        : 0xD2 0xC4 0xD9 0x5A 0xCA 0x22 0x0C 0xEE 
+! VTP:                                     0x4E 0xD4 0xFF 0x8C 0x85 0x3F 0x64 0xB9 
 ! 
 ! NAME: "1", DESCR: "WS-C3560X-48P"
 ! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0TK
@@ -157,6 +157,7 @@ interface Port-channel6
 interface Port-channel7
  description PORTCHANNEL TO AXS-7.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,107
  switchport mode trunk
 !
 interface FastEthernet0
@@ -304,12 +305,32 @@ interface GigabitEthernet0/20
  channel-group 5 mode active
 !
 interface GigabitEthernet0/21
+ description UPLINK TO AXS-6.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,106
+ switchport mode trunk
+ channel-group 6 mode active
 !
 interface GigabitEthernet0/22
+ description UPLINK TO AXS-6.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,106
+ switchport mode trunk
+ channel-group 6 mode active
 !
 interface GigabitEthernet0/23
+ description UPLINK TO AXS-6.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,106
+ switchport mode trunk
+ channel-group 6 mode active
 !
 interface GigabitEthernet0/24
+ description UPLINK TO AXS-6.EVENT.LANETS.CA
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,106
+ switchport mode trunk
+ channel-group 6 mode active
 !
 interface GigabitEthernet0/25
  description UPLINK TO AXS-7.EVENT.LANETS.CA
