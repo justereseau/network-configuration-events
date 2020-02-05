@@ -14,7 +14,7 @@
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
 ! VTP: Device ID                       : 588d.0917.ff00
-! VTP: Local updater ID is 192.168.105.2 on interface Te1/1 (first layer3 interface found)
+! VTP: Local updater ID is 10.10.5.1 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
