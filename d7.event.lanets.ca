@@ -47,7 +47,7 @@ service timestamps debug datetime msec
 service timestamps log datetime msec
 service password-encryption
 !
-hostname d7.event.lanets.ca
+hostname d7
 !
 boot-start-marker
 boot-end-marker
