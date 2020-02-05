@@ -1,11 +1,11 @@
-! Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 12.2(52)SE, RELEASE SOFTWARE (fc3)
+! Cisco IOS Software, C3560E Software (C3560E-UNIVERSALK9-M), Version 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
 ! 
-! Image: Software: C2960-LANBASEK9-M, 12.2(52)SE, RELEASE SOFTWARE (fc3)
-! Image: Compiled: Fri 25-Sep-09 08:49 by sasyamal
-! Image: flash:c2960-lanbasek9-mz.122-52.SE.bin
-! Chassis type: WS-C2960G-24TC-L
-! Memory: main 65536K
-! Processor ID: FOC1126U2TU
+! Image: Software: C3560E-UNIVERSALK9-M, 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
+! Image: Compiled: Thu 03-Nov-16 13:57 by prod_rel_team
+! Image: flash:/3560e-universalk9-mz.150-2.SE10a.bin
+! Chassis type: WS-C3560X-24
+! Memory: main 262144K
+! Processor ID: FDO2009F036
 ! CPU: PowerPC405
 ! 
 ! VTP: VTP Version capable             : 1 to 3
@@ -13,23 +13,26 @@
 ! VTP: VTP Domain Name                 : 
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
-! VTP: Device ID                       : 001c.b16c.b300
+! VTP: Device ID                       : 0042.6801.0e80
 ! VTP: Local updater ID is 10.10.8.101 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
-! VTP: Maximum VLANs supported locally   : 255
+! VTP: Maximum VLANs supported locally   : 1005
 ! VTP: Number of existing VLANs          : 7
 ! VTP: Configuration Revision            : 2
 ! VTP: MD5 digest                        : 0xC3 0xB7 0x9F 0x2A 0xDA 0xF6 0x07 0x89 
 ! VTP:                                     0x58 0xCF 0xD8 0x67 0x10 0xA2 0xA4 0xC9 
 ! 
-! NAME: "1", DESCR: "WS-C2960G-24TC-L"
-! PID: WS-C2960G-24TC-L  , VID: V03  , SN: FOC1126U2TU
+! NAME: "1", DESCR: "WS-C3560X-24"
+! PID: WS-C3560X-24T-E   , VID: V07  , SN: FDO2009F036
+! 
+! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
+! PID: C3KX-PWR-350WAC   , VID: V03L , SN: LIT20180N7K
 ! 
 ! 
 !
-version 12.2
+version 15.0
 no service pad
 service timestamps debug datetime msec
 service timestamps log datetime msec
@@ -41,9 +44,8 @@ boot-start-marker
 boot-end-marker
 !
 !
+!
 username lanets privilege 15 password 7 <secret hidden>
-!
-!
 aaa new-model
 !
 !
@@ -56,10 +58,12 @@ aaa authorization exec default group ipa local
 !
 !
 !
+!
+!
+!
 aaa session-id common
 system mtu routing 1500
-authentication mac-move permit
-ip subnet-zero
+!
 !
 !
 no ip domain-lookup
@@ -75,27 +79,45 @@ login on-success log
 !
 !
 spanning-tree mode pvst
-spanning-tree etherchannel guard misconfig
 spanning-tree extend system-id
 !
+!
+!
+!
+!
+!
+!
+!
+!
 vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+!
+!
+!
 !
 !
 !
 interface Port-channel1
  description PORTCHANNEL TO D8
  switchport trunk allowed vlan 10,801
- switchport mode trunk
+!
+interface FastEthernet0
+ no ip address
 !
 interface GigabitEthernet0/1
  description BYOC interface
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/2
@@ -103,10 +125,10 @@ interface GigabitEthernet0/2
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/3
@@ -114,10 +136,10 @@ interface GigabitEthernet0/3
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/4
@@ -125,10 +147,10 @@ interface GigabitEthernet0/4
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/5
@@ -136,10 +158,10 @@ interface GigabitEthernet0/5
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/6
@@ -147,10 +169,10 @@ interface GigabitEthernet0/6
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/7
@@ -158,10 +180,10 @@ interface GigabitEthernet0/7
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/8
@@ -169,10 +191,10 @@ interface GigabitEthernet0/8
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/9
@@ -180,10 +202,10 @@ interface GigabitEthernet0/9
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/10
@@ -191,10 +213,10 @@ interface GigabitEthernet0/10
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/11
@@ -202,10 +224,10 @@ interface GigabitEthernet0/11
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/12
@@ -213,10 +235,10 @@ interface GigabitEthernet0/12
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/13
@@ -224,10 +246,10 @@ interface GigabitEthernet0/13
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/14
@@ -235,10 +257,10 @@ interface GigabitEthernet0/14
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/15
@@ -246,10 +268,10 @@ interface GigabitEthernet0/15
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/16
@@ -257,10 +279,10 @@ interface GigabitEthernet0/16
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/17
@@ -268,10 +290,10 @@ interface GigabitEthernet0/17
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/18
@@ -279,10 +301,10 @@ interface GigabitEthernet0/18
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/19
@@ -290,10 +312,10 @@ interface GigabitEthernet0/19
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/20
@@ -301,55 +323,68 @@ interface GigabitEthernet0/20
  switchport access vlan 801
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
- switchport port-security aging time 5
  switchport port-security violation restrict
+ switchport port-security aging time 5
  switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/21
  description UPLINK TO D8
  switchport trunk allowed vlan 10,801
- switchport mode trunk
  channel-group 1 mode active
 !
 interface GigabitEthernet0/22
  description UPLINK TO D8
  switchport trunk allowed vlan 10,801
- switchport mode trunk
  channel-group 1 mode active
 !
 interface GigabitEthernet0/23
  description UPLINK TO D8
  switchport trunk allowed vlan 10,801
- switchport mode trunk
  channel-group 1 mode active
 !
 interface GigabitEthernet0/24
  description UPLINK TO D8
  switchport trunk allowed vlan 10,801
- switchport mode trunk
  channel-group 1 mode active
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet1/3
+!
+interface GigabitEthernet1/4
+!
+interface TenGigabitEthernet1/1
+!
+interface TenGigabitEthernet1/2
 !
 interface Vlan1
  no ip address
- no ip route-cache
 !
 interface Vlan10
  description Management
  ip address 10.10.8.101 255.255.255.0
- no ip route-cache
 !
 ip default-gateway 10.10.8.1
+!
 no ip http server
 no ip http secure-server
 !
-ip sla enable reaction-alerts
+!
+!
 logging origin-id hostname
 logging source-interface Vlan10
 logging host 10.20.10.55 transport udp port 9002
+!
+!
 snmp-server community <configuration removed>
+!
 radius-server timeout 2
+!
+!
 banner motd ^CC
 This config is managed by Ansible. Never edit by hand!
 THIS DEVICE IS THE PROPERTY OF LAN ETS.
