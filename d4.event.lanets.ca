@@ -14,7 +14,7 @@
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
 ! VTP: Device ID                       : 588d.0919.9900
-! VTP: Local updater ID is 192.168.104.2 on interface Te1/1 (first layer3 interface found)
+! VTP: Local updater ID is 10.10.4.1 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
@@ -123,21 +123,25 @@ interface Port-channel1
 interface Port-channel2
  description PORTCHANNEL TO AXS-21.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,421
  switchport mode trunk
 !
 interface Port-channel3
  description PORTCHANNEL TO AXS-22.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,422
  switchport mode trunk
 !
 interface Port-channel4
  description PORTCHANNEL TO AXS-23.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,423
  switchport mode trunk
 !
 interface Port-channel5
  description PORTCHANNEL TO AXS-24.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,424
  switchport mode trunk
 !
 interface Port-channel6
