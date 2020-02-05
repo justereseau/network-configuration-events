@@ -35,7 +35,7 @@ service timestamps debug datetime msec
 service timestamps log datetime msec
 service password-encryption
 !
-hostname axs-ftp1.event.lanets.ca
+hostname axs-ftp1
 !
 boot-start-marker
 boot-end-marker
