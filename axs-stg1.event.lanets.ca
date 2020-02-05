@@ -40,13 +40,14 @@
 ! 
 ! 
 !
+!
 version 15.0
 no service pad
 service timestamps debug datetime msec
 service timestamps log datetime msec
 service password-encryption
 !
-hostname d7
+hostname d7.event.lanets.ca
 !
 boot-start-marker
 boot-end-marker
@@ -388,10 +389,11 @@ interface GigabitEthernet0/34
 !
 interface GigabitEthernet0/35
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
- switchport trunk allowed vlan 10
- switchport mode trunk
+ switchport trunk allowed vlan 10,90
+ switchport mode access
 !
 interface GigabitEthernet0/36
  description UPLINK TO RANDOM SPONSOR
