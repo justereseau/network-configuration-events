@@ -36,7 +36,7 @@ service timestamps debug datetime msec
 service timestamps log datetime msec
 service password-encryption
 !
-hostname axs-stg1.event.lanets.ca
+hostname axs-stg1
 !
 boot-start-marker
 boot-end-marker
