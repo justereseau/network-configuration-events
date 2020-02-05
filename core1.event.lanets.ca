@@ -32,7 +32,7 @@
 !   Intel(R) Celeron(R) CPU        P4505  @ 1.87GHz with 3903096 kB of memory.
 !   Processor Board ID FOC163205SV
 ! 
-!   Device name: core1
+!   Device name: core1.event.lanets.ca
 !   bootflash:    1635720 kB
 !   usb1:               0 kB (expansion flash)
 ! 
@@ -58,8 +58,8 @@
 !Command: show running-config
 
 version 7.0(3)I6(2)
-hostname core1
-vdc core1 id 1
+hostname core1.event.lanets.ca
+vdc core1.event.lanets.ca id 1
   limit-resource vlan minimum 16 maximum 4094
   limit-resource vrf minimum 2 maximum 4096
   limit-resource port-channel minimum 0 maximum 104
