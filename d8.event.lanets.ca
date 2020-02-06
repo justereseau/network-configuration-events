@@ -18,10 +18,10 @@
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Transparent
 ! VTP: Maximum VLANs supported locally   : 1005
-! VTP: Number of existing VLANs          : 27
+! VTP: Number of existing VLANs          : 28
 ! VTP: Configuration Revision            : 0
-! VTP: MD5 digest                        : 0xC2 0x76 0x4E 0x3B 0x41 0xEB 0x53 0xFF 
-! VTP:                                     0x3E 0x85 0x6A 0xE9 0xDE 0x24 0x78 0x50 
+! VTP: MD5 digest                        : 0x4A 0x8F 0x98 0x22 0x35 0xCF 0xFA 0x26 
+! VTP:                                     0x7C 0x72 0x88 0x2F 0xD1 0x40 0x7D 0x9A 
 ! 
 ! NAME: "1", DESCR: "WS-C3560X-48"
 ! PID: WS-C3560X-48T-E   , VID: V04  , SN: FDO1651X12L
@@ -106,6 +106,9 @@ vlan internal allocation policy ascending
 !
 vlan 10
  name Management
+!
+vlan 90
+ name WIFI
 !
 vlan 99
  name Private
@@ -572,6 +575,12 @@ interface Vlan1
 interface Vlan10
  description Management
  ip address 10.10.8.1 255.255.255.0
+!
+interface Vlan90
+ description Management
+ ip address 10.90.8.1 255.255.255.0
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
 !
 interface Vlan99
  description Management
