@@ -416,6 +416,7 @@ interface Ethernet1/14
 interface Ethernet1/15
 
 interface Ethernet1/16
+  speed 1000
 
 interface Ethernet1/17
 
