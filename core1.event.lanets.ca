@@ -416,7 +416,6 @@ interface Ethernet1/14
 interface Ethernet1/15
 
 interface Ethernet1/16
-  speed 1000
 
 interface Ethernet1/17
 
@@ -506,6 +505,7 @@ interface Ethernet1/33
 interface Ethernet1/34
   description TO-D9-BYOC
   no switchport
+  speed 1000
   ip address 192.168.109.1/30
   ip router eigrp 1
   no ip passive-interface eigrp 1
@@ -514,6 +514,13 @@ interface Ethernet1/34
 interface Ethernet1/35
 
 interface Ethernet1/36
+  description TO-D10-BYOC
+  no switchport
+  speed 1000
+  ip address 192.168.110.1/30
+  ip router eigrp 1
+  no ip passive-interface eigrp 1
+  ip policy route-map NAT_PBR
 
 interface Ethernet1/37
 
