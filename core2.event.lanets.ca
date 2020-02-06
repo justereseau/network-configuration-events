@@ -29,7 +29,7 @@
 ! 
 ! Hardware
 !   cisco Nexus3000 C3064PQ Chassis 
-!   Intel(R) Celeron(R) CPU        P4505  @ 1.87GHz with 3903096 kB of memory.
+!   Intel(R) Celeron(R) CPU        P4505  @ 1.87GHz with 3903100 kB of memory.
 !   Processor Board ID FOC16316CV7
 ! 
 !   Device name: core2
@@ -499,6 +499,7 @@ interface Ethernet1/32
 interface Ethernet1/33
   description TO-D9-BYOC
   no switchport
+  speed 1000
   ip address 192.168.209.1/30
   ip router eigrp 1
   no ip passive-interface eigrp 1
@@ -507,6 +508,13 @@ interface Ethernet1/33
 interface Ethernet1/34
 
 interface Ethernet1/35
+  description TO-D10-BYOC
+  no switchport
+  speed 1000
+  ip address 192.168.210.1/30
+  ip router eigrp 1
+  no ip passive-interface eigrp 1
+  ip policy route-map NAT_PBR
 
 interface Ethernet1/36
 
