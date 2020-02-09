@@ -14,7 +14,7 @@
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
 ! VTP: Device ID                       : 588d.0917.ff00
-! VTP: Local updater ID is 192.168.105.2 on interface Te1/1 (first layer3 interface found)
+! VTP: Local updater ID is 10.10.5.1 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
@@ -28,7 +28,7 @@
 ! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0UX
 ! 
 ! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
-! PID: C3KX-PWR-350WAC   , VID: V03A , SN: ART1952F4FP
+! PID: PWR-C1-715WAC     , VID: V01D , SN: DCB1702G0KE
 ! 
 ! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
 ! PID: C3KX-NM-10G       , VID: V01  , SN: FDO18071N7A
@@ -73,6 +73,7 @@ aaa authorization exec default group ipa local
 aaa session-id common
 system mtu routing 1500
 ip routing
+no ip cef optimize neighbor resolution
 !
 !
 no ip domain-lookup
