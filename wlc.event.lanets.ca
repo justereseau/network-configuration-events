@@ -1,0 +1,333 @@
+! Cisco IOS Software, IOS-XE Software, 5700 Series Wireless LAN Controller Software (CT5760-IPSERVICESK9-M), Version 03.06.04.E RELEASE SOFTWARE (fc2)
+! 
+! Image: Software: CT5760-IPSERVICESK9-M, 03.06.04.E RELEASE SOFTWARE (fc2)
+! Image: Compiled: Sat 13-Feb-16 07:41 by prod_rel_team
+! Image: flash:/packages.conf
+! Chassis type: AIR-CT5760
+! Memory: main 10485760K
+! Processor ID: FOC1922Z51P
+! CPU: i686
+! Memory: nvram 2048K
+! 
+! VTP: VTP Version capable             : 1 to 3
+! VTP: VTP version running             : 1
+! VTP: VTP Domain Name                 : 
+! VTP: VTP Pruning Mode                : Disabled
+! VTP: VTP Traps Generation            : Disabled
+! VTP: Device ID                       : dceb.94da.5e80
+! VTP: Local updater ID is 10.20.10.90 on interface Vl10 (lowest numbered VLAN interface found)
+! VTP: Feature VLAN:
+! VTP: --------------
+! VTP: VTP Operating Mode                : Server
+! VTP: Maximum VLANs supported locally   : 1005
+! VTP: Number of existing VLANs          : 9
+! VTP: Configuration Revision            : 16
+! VTP: MD5 digest                        : 0xE7 0x86 0xCF 0xF6 0x19 0x85 0x0A 0x1B 
+! VTP:                                     0x8F 0x9D 0xDC 0x22 0x24 0xDD 0x87 0xF8 
+! 
+! NAME: "c57xx Stack", DESCR: "c57xx Stack"
+! PID: AIR-CT5760        , VID: V04  , SN: FOC1922Z51P
+! 
+! NAME: "Switch 1", DESCR: "AIR-CT5760-6"
+! PID: AIR-CT5760        , VID: V04  , SN: FOC1922Z51P
+! 
+! NAME: "Switch 1 - Power Supply A", DESCR: "Switch 1 - Power Supply A"
+! PID: C3KX-PWR-350WAC   , VID: V01  , SN: LIT142601K5
+! 
+! NAME: "Switch 1 - Power Supply B", DESCR: "Switch 1 - Power Supply B"
+! PID: PWR-C1-350WAC     , VID: V02  , SN: ART2120FD8V
+! 
+! NAME: "TenGigabitEthernet1/0/1", DESCR: "SFP-10GBase-CX1"
+! PID: SFP-H10GB-CU3M     , VID: V02  , SN: D87B1713325-1  
+! 
+! NAME: "TenGigabitEthernet1/0/2", DESCR: "SFP-10GBase-CX1"
+! PID: SFP-H10GB-CU3M     , VID: V02  , SN: D87B1713328-2  
+! 
+! 
+!
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname wlc
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 <secret hidden>
+enable password 7 <secret hidden>
+!
+username justereseau privilege 15 password 7 <secret hidden>
+aaa new-model
+!
+!
+aaa group server radius ipa
+ server-private 10.20.10.6 auth-port 1812 acct-port 1813 key 7 <secret hidden>
+ ip radius source-interface Vlan10
+!
+aaa authentication login default group ipa local
+aaa authorization exec default group ipa local 
+aaa authorization network default local 
+!
+!
+!
+!
+!
+!
+aaa session-id common
+switch 1 provision air-ct5760-6
+!
+!
+!
+!
+!
+!
+ip domain-name event.lanets.ca
+no ip dhcp snooping vlan 1-4094
+ip dhcp snooping information option
+no ip dhcp snooping wireless bootp-broadcast enable
+no ip dhcp snooping
+ip dhcp excluded-address 10.69.0.1 10.69.0.100
+ip dhcp excluded-address 10.70.0.1 10.70.0.100
+ip dhcp excluded-address 10.71.0.1 10.71.0.100
+!
+ip dhcp pool DHCP-WIFI-LanETS
+ network 10.69.0.0 255.255.0.0
+ dns-server 1.1.1.1 8.8.8.8 8.8.4.4 
+ default-router 10.69.0.1 
+!
+ip dhcp pool DHCP-WIFI-LanETS-Exec
+ network 10.70.0.0 255.255.0.0
+ dns-server 1.1.1.1 8.8.8.8 8.8.4.4 
+ default-router 10.70.0.1 
+!
+ip dhcp pool DHCP-WIFI-LanETS-Commanditaires
+ network 10.71.0.0 255.255.0.0
+ dns-server 1.1.1.1 8.8.8.8 8.8.4.4 
+ default-router 10.71.0.1 
+!
+!
+qos queue-softmax-multiplier 100
+vtp mode server
+!
+flow monitor wireless-avc-basic
+ record wireless avc basic
+!
+!
+!
+diagnostic bootup level minimal
+spanning-tree mode pvst
+spanning-tree extend system-id
+hw-switch switch 1 logging onboard message level 3
+!
+redundancy
+ mode sso
+!
+!
+!
+class-map match-any non-client-nrt-class
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description WLC-LACP
+ switchport trunk allowed vlan 10,69-71
+ switchport mode trunk
+ no ip dhcp snooping trust
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ negotiation auto
+!
+interface TenGigabitEthernet1/0/1
+ switchport trunk allowed vlan 10,69-71
+ switchport mode trunk
+ channel-group 1 mode active
+ no ip dhcp snooping trust
+!
+interface TenGigabitEthernet1/0/2
+ switchport trunk allowed vlan 10,69-71
+ switchport mode trunk
+ channel-group 1 mode active
+ no ip dhcp snooping trust
+!
+interface TenGigabitEthernet1/0/3
+ no ip dhcp snooping trust
+!
+interface TenGigabitEthernet1/0/4
+ no ip dhcp snooping trust
+!
+interface TenGigabitEthernet1/0/5
+ no ip dhcp snooping trust
+!
+interface TenGigabitEthernet1/0/6
+ no ip dhcp snooping trust
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ description Vlan Management
+ ip address 10.20.10.90 255.255.255.0
+!
+interface Vlan69
+ description Wireless LanETS
+ ip dhcp relay information trusted
+ ip address 10.69.0.90 255.255.0.0
+!
+interface Vlan70
+ description Wireless LanETS-Exec
+ ip dhcp relay information trusted
+ ip address 10.70.0.90 255.255.0.0
+!
+interface Vlan71
+ description Wireless LanETS-Commanditaires
+ ip dhcp relay information trusted
+ ip address 10.71.0.90 255.255.0.0
+!
+ip default-gateway 10.20.10.1
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+!
+!
+!
+snmp-server community <configuration removed>
+!
+!
+banner motd ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - WLC
+^C
+!
+line con 0
+ logging synchronous
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class MGMT_ACL in
+ exec-timeout 60 0
+ password <secret hidden>
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ access-class MGMT_ACL in
+ exec-timeout 60 0
+ password <secret hidden>
+ logging synchronous
+ transport input ssh
+!
+ntp server 162.159.200.123 maxpoll 5 minpoll 5
+wsma agent exec
+ profile httplistener
+ profile httpslistener
+!
+wsma agent config
+ profile httplistener
+ profile httpslistener
+!
+wsma agent filesys
+ profile httplistener
+ profile httpslistener
+!
+wsma agent notify
+ profile httplistener
+ profile httpslistener
+!
+!
+wsma profile listener httplistener
+ transport http
+!
+wsma profile listener httpslistener
+ transport https
+!
+wireless management interface Vlan10
+wlan LanETS 69 LanETS
+ client vlan 69
+ radio dot11a
+ no security wpa akm dot1x
+ security wpa akm psk set-key ascii 0 LanETS2020
+ security wpa wpa1
+ security wpa wpa1 ciphers aes
+ session-timeout 1800
+ no shutdown
+wlan LanETS-Exec 70 LanETS-Exec
+ client vlan 70
+ radio dot11a
+ no security wpa akm dot1x
+ security wpa akm psk set-key ascii 0 a3ctCMQ!3HxN
+ security wpa wpa1
+ security wpa wpa1 ciphers aes
+ session-timeout 1800
+ no shutdown
+wlan LanETS-Commanditaires 71 LanETS-Commanditaires
+ client vlan 71
+ radio dot11a
+ no security wpa akm dot1x
+ security wpa akm psk set-key ascii 0 mACAut7%aUD4
+ security wpa wpa1
+ security wpa wpa1 ciphers aes
+ session-timeout 1800
+ no shutdown
+ap led
+ap mgmtuser username lanets password 0 3qrrYsoHQZXpPusf secret 0 3qrrYsoHQZXpPusf
+no ap dot11 24ghz dot11g
+ap dot11 24ghz rate RATE_1M mandatory
+ap dot11 24ghz rate RATE_2M mandatory
+ap dot11 24ghz rate RATE_5_5M mandatory
+ap dot11 24ghz rate RATE_6M supported
+ap dot11 24ghz rate RATE_9M supported
+ap dot11 24ghz rate RATE_11M mandatory
+ap dot11 24ghz rate RATE_12M supported
+ap dot11 24ghz rate RATE_18M supported
+ap dot11 24ghz rate RATE_24M supported
+ap dot11 24ghz rate RATE_36M supported
+ap dot11 24ghz rate RATE_48M supported
+ap dot11 24ghz rate RATE_54M supported
+ap dot11 24ghz shutdown
+ap group default-group
+ap group LanETS
+ description "Access points in the LanETS"
+ wlan LanETS
+ wlan LanETS-Exec
+ wlan LanETS-Commanditaires
+end
+
