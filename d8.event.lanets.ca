@@ -20,14 +20,14 @@
 ! VTP: Maximum VLANs supported locally   : 1005
 ! VTP: Number of existing VLANs          : 28
 ! VTP: Configuration Revision            : 0
-! VTP: MD5 digest                        : 0x4A 0x8F 0x98 0x22 0x35 0xCF 0xFA 0x26 
-! VTP:                                     0x7C 0x72 0x88 0x2F 0xD1 0x40 0x7D 0x9A 
+! VTP: MD5 digest                        : 0x47 0x32 0x9E 0xAA 0xDC 0xC6 0xE5 0x52 
+! VTP:                                     0x10 0x49 0x07 0x79 0xC4 0xE4 0xE3 0xDE 
 ! 
 ! NAME: "1", DESCR: "WS-C3560X-48"
 ! PID: WS-C3560X-48T-E   , VID: V04  , SN: FDO1651X12L
 ! 
 ! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
-! PID: PWR-C1-715WAC     , VID: V02D , SN: DCA2126G2E3
+! PID: C3KX-PWR-350WAC   , VID: V03A , SN: ART1935F7FB
 ! 
 ! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
 ! PID: C3KX-NM-10G       , VID: V01  , SN: FDO17282CMX
@@ -39,7 +39,6 @@
 ! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223291     
 ! 
 ! 
-!
 !
 version 15.0
 no service pad
