@@ -28,7 +28,7 @@
 ! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0UD
 ! 
 ! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
-! PID: PWR-C1-350WAC     , VID: V02A , SN: ART2138FEKX
+! PID: PWR-C1-715WAC     , VID: V02L , SN: LIT20372X62
 ! 
 ! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
 ! PID: C3KX-NM-10G       , VID: V01  , SN: FDO18061B3W
@@ -40,7 +40,6 @@
 ! PID: SFP-10G-LRM         , VID: V01  , SN: AGD1427Z04L     
 ! 
 ! 
-!
 !
 version 15.0
 no service pad
@@ -149,7 +148,6 @@ interface Port-channel5
 interface Port-channel6
  description PORTCHANNEL TO AXS-25.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,90,99,425
  switchport mode trunk
 !
 interface FastEthernet0
