@@ -28,7 +28,7 @@
 ! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0TK
 ! 
 ! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
-! PID: C3KX-PWR-350WAC   , VID: V01D , SN: DTN1539L1SS
+! PID: C3KX-PWR-715WAC   , VID: V02L , SN: LIT16461HAN
 ! 
 ! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
 ! PID: C3KX-NM-10G       , VID: V01  , SN: FDO17231M9G
@@ -40,7 +40,6 @@
 ! PID: SFP-10G-LRM         , VID: V01  , SN: AGD1427Z2AU     
 ! 
 ! 
-!
 !
 version 15.0
 no service pad
