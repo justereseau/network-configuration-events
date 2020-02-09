@@ -86,6 +86,7 @@ role name priv-1
 no password strength-check
 username admin password 5 <secret hidden>  role network-admin
 username lanets password 5 <secret hidden>  role network-admin
+username lanets role network-operator
 
 banner motd ^C
 THIS DEVICE IS THE PROPERTY OF LAN ETS.
@@ -516,8 +517,14 @@ interface Ethernet1/33
 interface Ethernet1/34
 
 interface Ethernet1/35
+  description CSGO2:xg1
+  switchport access vlan 20
+  speed 1000
 
 interface Ethernet1/36
+  description CSGO3:xg1
+  switchport access vlan 20
+  speed 1000
 
 interface Ethernet1/37
   description WLC:Te1
@@ -628,6 +635,7 @@ router eigrp 1
   redistribute direct route-map ALL-NETWORKS
   redistribute static route-map ALL-NETWORKS
 logging server elastic-lb.event.lanets.ca port 9002
+logging server 10.20.10.55 port 9002
 logging source-interface Vlan10
 logging origin-id hostname
 
