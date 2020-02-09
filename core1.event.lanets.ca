@@ -627,7 +627,7 @@ router bgp 64511
     timers 30 90
     address-family ipv4 unicast
       weight 9999
-logging server 10.20.10.51 5 port 9004 use-vrf management
+logging server 10.20.10.55 5 port 9002 use-vrf management
 logging source-interface mgmt0
 logging origin-id hostname
 
