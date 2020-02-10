@@ -70,7 +70,7 @@ vrf definition Mgmt-vrf
 enable secret 5 <secret hidden>
 enable password 7 <secret hidden>
 !
-username justereseau privilege 15 password 7 <secret hidden>
+username lanets privilege 15 password 7 <secret hidden>
 aaa new-model
 !
 !
