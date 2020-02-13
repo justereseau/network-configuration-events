@@ -33,10 +33,15 @@
 ! PID: C3KX-NM-1G        , VID: V01  , SN: FDO15261QQ4
 ! 
 ! NAME: "GigabitEthernet1/1", DESCR: "10/100/1000BaseTX SFP"
-! PID: SFP-GE-T            , VID: V02  , SN: D8830810685     
+! PID: Unspecified       , VID:      , SN: AGM145127MQ     
+! 
+! NAME: "GigabitEthernet1/2", DESCR: "10/100/1000BaseTX SFP"
+! PID: Unspecified       , VID:      , SN: AGM193344FW     
+! 
+! NAME: "GigabitEthernet1/3", DESCR: "10/100/1000BaseTX SFP"
+! PID: Unspecified       , VID:      , SN: AGM154624W3     
 ! 
 ! 
-!
 !
 version 15.0
 no service pad
