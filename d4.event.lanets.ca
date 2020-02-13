@@ -148,6 +148,7 @@ interface Port-channel5
 interface Port-channel6
  description PORTCHANNEL TO AXS-25.EVENT.LANETS.CA
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,90,99,425
  switchport mode trunk
 !
 interface FastEthernet0
