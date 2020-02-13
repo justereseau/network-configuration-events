@@ -34,10 +34,10 @@
 ! PID: C3KX-NM-1G        , VID: V01  , SN: FDO18040JQC
 ! 
 ! NAME: "GigabitEthernet1/2", DESCR: "1000BaseSX SFP"
-! PID: GLC-SX-MMD          , VID: V01  , SN: D87C2078540     
+! PID: GLC-SX-MMD          , VID: V01  , SN: D87C2078539     
 ! 
 ! NAME: "GigabitEthernet1/4", DESCR: "1000BaseSX SFP"
-! PID: GLC-SX-MMD          , VID: V01  , SN: G1804182605     
+! PID: GLC-SX-MMD          , VID: V01  , SN: D87C2078538     
 ! 
 ! 
 !
