@@ -1,0 +1,394 @@
+! Cisco IOS Software, C3560E Software (C3560E-UNIVERSALK9-M), Version 12.2(55)SE10, RELEASE SOFTWARE (fc2)
+! 
+! Image: Software: C3560E-UNIVERSALK9-M, 12.2(55)SE10, RELEASE SOFTWARE (fc2)
+! Image: Compiled: Wed 11-Feb-15 11:28 by prod_rel_team
+! Image: flash:/c3560e-universalk9-mz.122-55.SE10/c3560e-universalk9-mz.122-55.SE10.bin
+! Chassis type: WS-C3560X-24
+! Memory: main 262144K
+! Processor ID: FDO2009F039
+! CPU: PowerPC405
+! 
+! VTP: VTP Version capable             : 1 to 3
+! VTP: VTP version running             : 1
+! VTP: VTP Domain Name                 : 
+! VTP: VTP Pruning Mode                : Disabled
+! VTP: VTP Traps Generation            : Disabled
+! VTP: Device ID                       : 0042.6801.0c00
+! VTP: Local updater ID is 10.10.8.103 on interface Vl10 (lowest numbered VLAN interface found)
+! VTP: Feature VLAN:
+! VTP: --------------
+! VTP: VTP Operating Mode                : Server
+! VTP: Maximum VLANs supported locally   : 1005
+! VTP: Number of existing VLANs          : 7
+! VTP: Configuration Revision            : 4
+! VTP: MD5 digest                        : 0xD2 0x1F 0x91 0x39 0x9A 0x44 0xCB 0xA6 
+! VTP:                                     0xC9 0x1C 0xE5 0x82 0x3A 0x96 0x49 0x2B 
+! 
+! NAME: "1", DESCR: "WS-C3560X-24"
+! PID: WS-C3560X-24T-E   , VID: V07  , SN: FDO2009F039
+! 
+! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
+! PID: C3KX-PWR-350WAC   , VID: V03  , SN: ART1952F4EA
+! 
+! 
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname axs-ftp3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username lanets privilege 15 password 7 <secret hidden>
+!
+!
+aaa new-model
+!
+!
+aaa group server radius ipa
+ server-private 10.20.10.6 auth-port 1812 acct-port 1813 key 7 <secret hidden>
+ ip radius source-interface Vlan10
+!
+aaa authentication login default group ipa local
+aaa authorization exec default group ipa local 
+!
+!
+!
+aaa session-id common
+system mtu routing 1500
+!
+!
+no ip domain-lookup
+ip domain-name event.lanets.ca
+login block-for 300 attempts 4 within 120
+login delay 2
+login on-failure log
+login on-success log
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+interface Port-channel1
+ description PORTCHANNEL TO D8
+ switchport trunk allowed vlan 10,803
+!
+interface FastEthernet0
+ no ip address
+!
+interface GigabitEthernet0/1
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/10
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/11
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/12
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/13
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/14
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ description BYOC interface
+ switchport access vlan 803
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ description UPLINK TO D8
+ switchport trunk allowed vlan 10,803
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/22
+ description UPLINK TO D8
+ switchport trunk allowed vlan 10,803
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/23
+ description UPLINK TO D8
+ switchport trunk allowed vlan 10,803
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/24
+ description UPLINK TO D8
+ switchport trunk allowed vlan 10,803
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet1/3
+!
+interface GigabitEthernet1/4
+!
+interface TenGigabitEthernet1/1
+!
+interface TenGigabitEthernet1/2
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ description Management
+ ip address 10.10.8.103 255.255.255.0
+!
+ip default-gateway 10.10.8.1
+ip classless
+!
+no ip http server
+no ip http secure-server
+!
+!
+logging origin-id hostname
+logging source-interface Vlan10
+logging host 10.20.10.55 transport udp port 9002
+!
+snmp-server community <configuration removed>
+radius-server timeout 2
+!
+banner motd ^CC
+This config is managed by Ansible. Never edit by hand!
+THIS DEVICE IS THE PROPERTY OF LAN ETS.
+IF YOU SEE THIS - PLEASE BE AWARE THAT THIS IS A PRODUCTION SWITCH.
+PLEASE DO NOT REBOOT OR DO STUPID STUFF WITHOUT WARNING SOMEONE FIRST.
+$$\                                $$$$$$$$\ $$$$$$$$\  $$$$$$\
+$$ |                               $$  _____|\__$$  __|$$  __$$\
+$$ |      $$$$$$\  $$$$$$$\        $$ |         $$ |   $$ /  \__|
+$$ |      \____$$\ $$  __$$\       $$$$$\       $$ |   \$$$$$$\
+$$ |      $$$$$$$ |$$ |  $$ |      $$  __|      $$ |    \____$$\
+$$ |     $$  __$$ |$$ |  $$ |      $$ |         $$ |   $$\   $$ |
+$$$$$$$$\\$$$$$$$ |$$ |  $$ |      $$$$$$$$\    $$ |   \$$$$$$  |
+\________|\_______|\__|  \__|      \________|   \__|    \______/
+Lan ETS Event - AXS-FreeToPlay-3
+^C
+!
+line con 0
+ logging synchronous
+line vty 0 4
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ exec-timeout 60 0
+ logging synchronous
+ transport input ssh
+!
+end
+
