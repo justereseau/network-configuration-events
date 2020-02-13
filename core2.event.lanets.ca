@@ -541,7 +541,6 @@ interface Ethernet1/46
 interface Ethernet1/47
   description Bell Primary
   no switchport
-  speed 1000
   ip address 172.26.254.102/30
 
 interface Ethernet1/48
