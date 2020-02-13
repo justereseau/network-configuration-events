@@ -354,6 +354,7 @@ vlan 106
   name Bell_Lab
 vlan 247
   name DMZ_LAB
+vlan 566,599,2500
 no spanning-tree vlan 1,247
 route-map ALL-NETWORKS permit 10
   match ip address prefix-list ALL-NETWORKS 
@@ -415,6 +416,15 @@ interface Vlan71
   no autostate
   ip address 10.71.0.1/16
 
+interface Vlan566
+  ip address 10.56.60.1/24
+
+interface Vlan599
+  ip address 10.59.90.1/24
+
+interface Vlan2500
+  ip address 10.25.0.1/24
+
 interface port-channel1
   description esxi1:Te1-Te2
   switchport mode trunk
@@ -453,6 +463,9 @@ interface Ethernet1/2
   ip policy route-map NAT_PBR
 
 interface Ethernet1/3
+  switchport mode trunk
+  switchport trunk allowed vlan 566,599,2500
+  speed 1000
 
 interface Ethernet1/4
 
