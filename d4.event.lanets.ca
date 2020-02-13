@@ -14,7 +14,7 @@
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
 ! VTP: Device ID                       : 588d.0919.9900
-! VTP: Local updater ID is 192.168.104.2 on interface Te1/1 (first layer3 interface found)
+! VTP: Local updater ID is 10.10.4.1 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
@@ -34,10 +34,10 @@
 ! PID: C3KX-NM-10G       , VID: V01  , SN: FDO18061B3W
 ! 
 ! NAME: "TenGigabitEthernet1/1", DESCR: "SFP-10GBase-LRM"
-! PID: SFP-10G-LRM         , VID: V03  , SN: AGD1840V13M     
+! PID: SFP-10G-LRM         , VID: V01  , SN: AGD1427Z27F     
 ! 
 ! NAME: "TenGigabitEthernet1/2", DESCR: "SFP-10GBase-LRM"
-! PID: SFP-10G-LRM         , VID: V01  , SN: AGD1427Z04L     
+! PID: SFP-10G-LRM         , VID: V01  , SN: AGD1427Z2AU     
 ! 
 ! 
 !
