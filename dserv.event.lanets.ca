@@ -417,12 +417,15 @@ interface Vlan71
   ip address 10.71.0.1/16
 
 interface Vlan566
+  description PATCH_PRIVATE
   ip address 10.56.60.1/24
 
 interface Vlan599
+  description PATCH_CAISSE
   ip address 10.59.90.1/24
 
 interface Vlan2500
+  description PATCH_AP
   ip address 10.25.0.1/24
 
 interface port-channel1
