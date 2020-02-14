@@ -27,18 +27,19 @@
 ! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0UG
 ! 
 ! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
-! PID: C3KX-PWR-350WAC   , VID: V02L , SN: LIT16050Z4F
+! PID: C3KX-PWR-350WAC   , VID: V02D , SN: DTN1609L1L7
 ! 
 ! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 10G ST Module"
 ! PID: C3KX-NM-10G       , VID: V01  , SN: FDO17521YPC
 ! 
 ! NAME: "TenGigabitEthernet1/1", DESCR: "SFP-10GBase-LR"
-! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223295     
+! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223299     
 ! 
 ! NAME: "TenGigabitEthernet1/2", DESCR: "SFP-10GBase-LR"
-! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223296     
+! PID: SFP-10G-BXD-I       , VID: V01  , SN: G1906223295     
 ! 
 ! 
+!
 !
 version 15.0
 no service pad
@@ -182,311 +183,399 @@ interface GigabitEthernet0/4
 !
 interface GigabitEthernet0/5
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/6
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/7
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/8
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/9
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/10
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/11
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/12
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/13
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/14
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/15
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/16
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/17
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/18
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/19
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/20
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/21
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/22
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/23
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/24
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/25
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/26
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/27
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/28
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/29
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/30
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/31
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/32
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/33
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/34
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/35
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/36
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/37
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/38
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/39
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/40
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/41
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/42
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/43
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/44
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/45
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/46
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/47
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet0/48
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
+ spanning-tree portfast
 !
 interface GigabitEthernet1/1
 !
