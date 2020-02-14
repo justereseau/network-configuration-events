@@ -3,9 +3,9 @@
 ! Image: Software: C3560E-UNIVERSALK9-M, 15.0(2)SE10a, RELEASE SOFTWARE (fc3)
 ! Image: Compiled: Thu 03-Nov-16 13:57 by prod_rel_team
 ! Image: flash:/3560e-universalk9-mz.150-2.SE10a.bin
-! Chassis type: WS-C3560X-48
+! Chassis type: WS-C3560X-48P
 ! Memory: main 262144K
-! Processor ID: FDO1431P0XA
+! Processor ID: FDO1437P0VQ
 ! CPU: PowerPC405
 ! 
 ! VTP: VTP Version capable             : 1 to 3
@@ -13,24 +13,25 @@
 ! VTP: VTP Domain Name                 : 
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
-! VTP: Device ID                       : f866.f2d8.6c80
+! VTP: Device ID                       : 588d.0917.e880
+! VTP: Local updater ID is 10.10.1.101 on interface Vl10 (lowest numbered VLAN interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
-! VTP: VTP Operating Mode                : Transparent
+! VTP: VTP Operating Mode                : Server
 ! VTP: Maximum VLANs supported locally   : 1005
-! VTP: Number of existing VLANs          : 13
-! VTP: Configuration Revision            : 0
-! VTP: MD5 digest                        : 0x22 0xEE 0x83 0xC6 0xCA 0xB6 0x57 0xA6 
-! VTP:                                     0xE9 0x88 0xA6 0x42 0x98 0xFF 0xF9 0xCF 
+! VTP: Number of existing VLANs          : 10
+! VTP: Configuration Revision            : 11
+! VTP: MD5 digest                        : 0x2A 0x48 0xD8 0x54 0x7B 0x1A 0x1A 0x26 
+! VTP:                                     0xA7 0xE5 0xFD 0xD8 0x18 0x53 0x1B 0x84 
 ! 
-! NAME: "1", DESCR: "WS-C3560X-48"
-! PID: WS-C3560X-48T-S   , VID: V01  , SN: FDO1431P0XA
+! NAME: "1", DESCR: "WS-C3560X-48P"
+! PID: WS-C3560X-48P-S   , VID: V01  , SN: FDO1437P0VQ
 ! 
 ! NAME: "Power Supply 1", DESCR: "FRU Power Supply"
-! PID: C3KX-PWR-350WAC   , VID: V03A , SN: ART1952F4FE
+! PID: C3KX-PWR-350WAC   , VID: V02D , SN: DTN1609L1AG
 ! 
 ! NAME: "FRULink Slot 1 - FRULink Module", DESCR: "FRULink 1G Module"
-! PID: C3KX-NM-1G        , VID: V01  , SN: FDO14371J0M
+! PID: C3KX-NM-1G        , VID: V01  , SN: FDO15200A73
 ! 
 ! 
 !
@@ -72,7 +73,6 @@ login block-for 300 attempts 4 within 120
 login delay 2
 login on-failure log
 login on-success log
-vtp mode transparent
 !
 !
 !
@@ -92,25 +92,6 @@ spanning-tree extend system-id
 !
 vlan internal allocation policy ascending
 !
-vlan 10 
-!
-vlan 90
- name WIFI
-!
-vlan 99
- name PRIVATE
-!
-vlan 101
- name PUBLIC_VLAN
-!
-vlan 102
- name Player
-!
-vlan 166,177 
-!
-vlan 199
- name Management
-!
 !
 ! 
 !
@@ -121,9 +102,6 @@ vlan 199
 !
 !
 !
-interface Loopback10
- no ip address
-!
 interface Port-channel1
  description PORTCHANNEL TO D1
  switchport trunk encapsulation dot1q
@@ -133,7 +111,6 @@ interface Port-channel1
 interface Port-channel2
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,101
  switchport mode trunk
 !
 interface FastEthernet0
@@ -143,216 +120,396 @@ interface GigabitEthernet0/1
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/2
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/3
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/4
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/5
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/6
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/7
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/8
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/9
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/10
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/11
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/12
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/13
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/14
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/15
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/16
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/17
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/18
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/19
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/20
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/21
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/22
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/23
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/24
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/25
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/26
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/27
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/28
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/29
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/30
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/31
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/32
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/33
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/34
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/35
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/36
  description BYOC interface
  switchport access vlan 101
  switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
  spanning-tree portfast
 !
 interface GigabitEthernet0/37
@@ -378,9 +535,7 @@ interface GigabitEthernet0/40
 interface GigabitEthernet0/41
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,101
  switchport mode trunk
- speed 1000
  channel-group 2 mode active
 !
 interface GigabitEthernet0/42
@@ -388,15 +543,12 @@ interface GigabitEthernet0/42
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,90,99,101
  switchport mode trunk
- speed 1000
  channel-group 1 mode active
 !
 interface GigabitEthernet0/43
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,101
  switchport mode trunk
- speed 1000
  channel-group 2 mode active
 !
 interface GigabitEthernet0/44
@@ -404,15 +556,12 @@ interface GigabitEthernet0/44
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,90,99,101
  switchport mode trunk
- speed 1000
  channel-group 1 mode active
 !
 interface GigabitEthernet0/45
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,101
  switchport mode trunk
- speed 1000
  channel-group 2 mode active
 !
 interface GigabitEthernet0/46
@@ -420,15 +569,12 @@ interface GigabitEthernet0/46
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,90,99,101
  switchport mode trunk
- speed 1000
  channel-group 1 mode active
 !
 interface GigabitEthernet0/47
  description INTERCONNECT_STACK
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 10,101
  switchport mode trunk
- speed 1000
  channel-group 2 mode active
 !
 interface GigabitEthernet0/48
@@ -436,7 +582,6 @@ interface GigabitEthernet0/48
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10,90,99,101
  switchport mode trunk
- speed 1000
  channel-group 1 mode active
 !
 interface GigabitEthernet1/1
@@ -465,7 +610,7 @@ no ip http secure-server
 !
 !
 logging origin-id hostname
-logging source-interface Loopback10
+logging source-interface Vlan10
 logging host 10.20.10.55 transport udp port 9002
 !
 snmp-server community <configuration removed>
