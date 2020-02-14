@@ -41,6 +41,7 @@
 ! 
 ! 
 !
+!
 version 15.0
 no service pad
 service timestamps debug datetime msec
@@ -399,10 +400,14 @@ interface Vlan10
 interface Vlan90
  description Management
  ip address 10.90.4.1 255.255.255.0
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
 !
 interface Vlan99
  description Management
  ip address 10.99.4.1 255.255.255.0
+ ip helper-address 10.20.10.7
+ ip helper-address 10.20.10.8
 !
 interface Vlan420
  ip address 216.208.110.193 255.255.255.192
