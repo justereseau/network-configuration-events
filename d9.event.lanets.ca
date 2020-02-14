@@ -88,8 +88,10 @@ login on-success log
 !
 !
 !
+!
 spanning-tree mode pvst
 spanning-tree extend system-id
+no spanning-tree vlan 1,10,90,99
 !
 !
 !
