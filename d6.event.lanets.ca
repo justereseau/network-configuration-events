@@ -40,6 +40,7 @@
 ! 
 ! 
 !
+!
 version 15.0
 no service pad
 service timestamps debug datetime msec
@@ -375,6 +376,11 @@ interface GigabitEthernet0/46
 interface GigabitEthernet0/47
 !
 interface GigabitEthernet0/48
+ description STAGE CONSOLE
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,90,99
+ switchport mode trunk
 !
 interface GigabitEthernet1/1
 !
