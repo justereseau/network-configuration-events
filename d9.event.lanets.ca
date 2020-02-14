@@ -14,7 +14,7 @@
 ! VTP: VTP Pruning Mode                : Disabled
 ! VTP: VTP Traps Generation            : Disabled
 ! VTP: Device ID                       : f866.f2c2.5600
-! VTP: Local updater ID is 10.10.9.1 on interface Vl10 (lowest numbered VLAN interface found)
+! VTP: Local updater ID is 192.168.109.2 on interface Gi1/2 (first layer3 interface found)
 ! VTP: Feature VLAN:
 ! VTP: --------------
 ! VTP: VTP Operating Mode                : Server
@@ -196,10 +196,11 @@ interface GigabitEthernet0/12
 !
 interface GigabitEthernet0/13
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/14
  description UPLINK TO RANDOM SPONSOR
@@ -435,7 +436,6 @@ interface GigabitEthernet0/46
 interface GigabitEthernet0/47
  description UPLINK TO RANDOM SPONSOR
  switchport trunk encapsulation dot1q
- switchport trunk native vlan 99
  switchport mode trunk
 !
 interface GigabitEthernet0/48
