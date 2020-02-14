@@ -494,6 +494,10 @@ interface Ethernet1/15
 interface Ethernet1/16
 
 interface Ethernet1/17
+  description PATCH-PDC
+  switchport mode trunk
+  switchport trunk allowed vlan 566,599,2500
+  speed 1000
 
 interface Ethernet1/18
 
