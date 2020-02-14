@@ -489,7 +489,6 @@ no ip http secure-server
 logging origin-id hostname
 logging source-interface Loopback10
 logging host 10.20.10.55 transport udp port 9002
-access-list 1 permit 10.0.0.0 0.0.0.255
 access-list 1 permit 10.0.0.0 0.255.255.255
 !
 !
