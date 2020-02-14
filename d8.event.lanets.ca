@@ -246,10 +246,11 @@ interface GigabitEthernet0/11
 !
 interface GigabitEthernet0/12
  description UPLINK TO RANDOM SPONSOR
+ switchport access vlan 99
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/13
  description UPLINK TO RANDOM SPONSOR
