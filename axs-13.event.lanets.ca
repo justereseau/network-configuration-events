@@ -46,6 +46,7 @@
 ! 
 ! 
 !
+!
 version 15.0
 no service pad
 service timestamps debug datetime msec
@@ -621,10 +622,10 @@ interface GigabitEthernet0/44
  spanning-tree portfast
 !
 interface GigabitEthernet0/45
- description BYOC interface
+ description TV_AXS
  switchport access vlan 213
  switchport mode access
- switchport port-security maximum 2
+ switchport port-security maximum 4
  switchport port-security violation restrict
  switchport port-security aging time 5
  switchport port-security aging type inactivity
