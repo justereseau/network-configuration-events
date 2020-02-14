@@ -420,60 +420,68 @@ interface GigabitEthernet0/36
  switchport mode trunk
 !
 interface GigabitEthernet0/37
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/38
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/39
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/40
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/41
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/42
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/43
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/44
- description UPLINK TO RANDOM SPONSOR
+ description AP
+ switchport access vlan 90
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- switchport mode trunk
+ switchport mode access
 !
 interface GigabitEthernet0/45
  description UPLINK TO RANDOM SPONSOR
