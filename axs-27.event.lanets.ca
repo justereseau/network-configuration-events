@@ -39,6 +39,9 @@
 ! NAME: "GigabitEthernet1/2", DESCR: "10/100/1000BaseTX SFP"
 ! PID: Unspecified       , VID:      , SN: AGM150220VE     
 ! 
+! NAME: "GigabitEthernet1/3", DESCR: "10/100/1000BaseTX SFP"
+! PID: Unspecified       , VID:      , SN: AGM18524AW8     
+! 
 ! NAME: "GigabitEthernet1/4", DESCR: "10/100/1000BaseTX SFP"
 ! PID: Unspecified       , VID:      , SN: AGM183725TE     
 ! 
