@@ -217,6 +217,7 @@ ip http authentication local
 ip http secure-server
 !
 !
+logging host 10.20.10.55 transport udp port 9001
 !
 snmp-server community <configuration removed>
 !
