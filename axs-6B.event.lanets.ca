@@ -221,6 +221,15 @@ interface GigabitEthernet0/12
  spanning-tree portfast
 !
 interface GigabitEthernet0/13
+ description BYOC interface
+ switchport access vlan 106
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security aging time 5
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
 !
 interface GigabitEthernet0/14
 !
