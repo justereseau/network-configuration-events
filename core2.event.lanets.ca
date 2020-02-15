@@ -190,6 +190,9 @@ ipv6 access-list copp-system-acl-v6routingproto1
   30 permit udp any ff02::9/128 eq 521 
 ip access-list copp-system-dhcp-relay
   10 permit udp any eq bootps any eq bootps 
+ip access-list vty-acl-in
+  10 permit ip 10.0.0.0/8 any 
+  20 deny ip any any 
 class-map type control-plane match-any copp-icmp
   match access-group name copp-system-acl-icmp
 class-map type control-plane match-any copp-ntp
@@ -607,6 +610,7 @@ interface mgmt0
   ip address 10.20.10.12/24
 line console
 line vty
+  access-class vty-acl-in in
 boot nxos bootflash:/nxos.7.0.3.I6.2.bin 
 router eigrp 1
   router-id 10.20.10.12
