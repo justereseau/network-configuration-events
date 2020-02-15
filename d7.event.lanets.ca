@@ -640,12 +640,14 @@ no ip http secure-server
 logging origin-id hostname
 logging source-interface Loopback10
 logging host 10.20.10.55 transport udp port 9002
+access-list 1 permit 10.0.0.0 0.255.255.255
 !
 snmp-server community <configuration removed>
 !
 radius-server timeout 2
 !
 !
+no vstack
 banner login ^CC
 This config is managed by Ansible. Never edit by hand!
 THIS DEVICE IS THE PROPERTY OF LAN ETS.
@@ -680,10 +682,12 @@ Lan ETS Event - D7
 line con 0
  logging synchronous
 line vty 0 4
+ access-class 1 in
  exec-timeout 60 0
  logging synchronous
  transport input ssh
 line vty 5 15
+ access-class 1 in
  exec-timeout 60 0
  logging synchronous
  transport input ssh
