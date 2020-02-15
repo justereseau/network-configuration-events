@@ -34,6 +34,7 @@
 ! 
 ! 
 !
+!
 version 15.0
 no service pad
 service timestamps debug datetime msec
@@ -406,7 +407,6 @@ interface GigabitEthernet0/47
  description UPLINK TO D8
  switchport trunk native vlan 99
  switchport trunk allowed vlan 10,90,99
- channel-group 1 mode active
 !
 interface GigabitEthernet0/48
  description UPLINK TO D8
